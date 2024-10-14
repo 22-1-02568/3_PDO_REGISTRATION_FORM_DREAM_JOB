@@ -2,8 +2,9 @@
 require_once 'dbConfig.php';
 
 function insertIntoApplicants($pdo, $first_name, $last_name, $email, $phone, $experience, $skills, $cover_letter) {
-    $sql = "INSERT INTO applicants (first_name, last_name, email, phone, experience, skills, cover_letter) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
+    $sql = "INSERT INTO applicants (first_name, last_name, email, phone, experience, skills, cover_letter) VALUES (?, ?, ?, ?, ?, ?, ?)";
     $stmt = $pdo->prepare($sql);
+    // Passing 7 values now
     $executeQuery = $stmt->execute([$first_name, $last_name, $email, $phone, $experience, $skills, $cover_letter]);
 
     if ($executeQuery) {
