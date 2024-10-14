@@ -70,7 +70,7 @@
             color: #fff;
             width: 86px;
             height: 39px;
-            line-height: 39px; /* This ensures vertical centering */
+            line-height: 39px;
             text-align: center;
             text-decoration: none;
             display: inline-block;
@@ -83,8 +83,6 @@
         .back-button:hover {
             background-color: #0056b3;
         }
-
-
     </style>
 </head>
 <body>
@@ -115,6 +113,10 @@
             <div class="form-group">
                 <label for="skills">Skills</label>
                 <input type="text" name="skills" value="<?php echo htmlspecialchars($getApplicantById['skills']); ?>" required>
+            </div>
+            <div class="form-group">
+                <label for="coverLetter">Cover Letter</label>
+                <textarea name="coverLetter" required><?php echo htmlspecialchars($getApplicantById['cover_letter']); ?></textarea>
             </div>
             <button type="submit" name="editApplicantBtn">Update</button>
             <a href="index.php" class="back-button">Back</a>
