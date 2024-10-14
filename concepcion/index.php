@@ -23,7 +23,7 @@ $applicants = seeAllApplicants($pdo);
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Job Application Portal</title>
+    <title>Job Application Form</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -45,7 +45,7 @@ $applicants = seeAllApplicants($pdo);
             margin-top: 20px;
         }
         h1 {
-            text-align: left;
+            text-align: center;
             color: #333;
         }
         form {
