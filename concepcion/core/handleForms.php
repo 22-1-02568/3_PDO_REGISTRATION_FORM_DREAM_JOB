@@ -9,7 +9,9 @@ if (isset($_POST['applyJobBtn'])) {
     $phone = trim($_POST['phone']);
     $experience = trim($_POST['experience']);
     $skills = trim($_POST['skills']);
-    $coverLetter = trim($_POST['coverLetter']);
+    
+    // Check if coverLetter exists before accessing it
+    $coverLetter = isset($_POST['coverLetter']) ? trim($_POST['coverLetter']) : '';
 
     if (!empty($firstName) && !empty($lastName) && !empty($email) && !empty($phone) && !empty($experience) && !empty($skills) && !empty($coverLetter)) {
         $query = insertIntoApplicants($pdo, $firstName, $lastName, $email, $phone, $experience, $skills, $coverLetter);
@@ -32,7 +34,9 @@ if (isset($_POST['editApplicantBtn'])) {
     $phone = trim($_POST['phone']);
     $experience = trim($_POST['experience']);
     $skills = trim($_POST['skills']);
-    $coverLetter = trim($_POST['coverLetter']);
+    
+    // Check if coverLetter exists before accessing it
+    $coverLetter = isset($_POST['coverLetter']) ? trim($_POST['coverLetter']) : '';
 
     if (!empty($applicant_id) && !empty($firstName) && !empty($lastName) && !empty($email) && !empty($phone) && !empty($experience) && !empty($skills) && !empty($coverLetter)) {
         $query = updateApplicant($pdo, $applicant_id, $firstName, $lastName, $email, $phone, $experience, $skills, $coverLetter);
