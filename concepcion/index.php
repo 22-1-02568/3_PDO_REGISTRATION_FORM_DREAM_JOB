@@ -41,7 +41,7 @@ $applicants = seeAllApplicants($pdo);
             border-radius: 8px;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
             width: 100%;
-            max-width: 800px;
+            max-width: 1000px;
             margin-top: 20px;
         }
         h1 {
@@ -77,11 +77,13 @@ $applicants = seeAllApplicants($pdo);
         }
         .table-container {
             margin-top: 40px;
+            overflow-x: auto;
         }
         table {
-            width: ;
-            margin-top: 10px 20px;
-            align-items: center;
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+            margin-bottom: 20px;
         }
         table, th, td {
             border: 1px solid #ddd;
@@ -95,6 +97,17 @@ $applicants = seeAllApplicants($pdo);
         }
         .center-text {
             text-align: center;
+        }
+        .actions {
+            color: #007bff;
+            text-decoration: none;
+            margin-right: 10px;
+        }
+        .actions:hover {
+            text-decoration: underline;
+        }
+        .delete {
+            color: #dc3545;
         }
     </style>
 </head>
@@ -155,8 +168,8 @@ $applicants = seeAllApplicants($pdo);
                             <td><?= htmlspecialchars($applicant['skills']) ?></td>
                             <td><?= htmlspecialchars($applicant['cover_letter']) ?></td>
                             <td>
-                                <a href="editApplicant.php?applicant_id=<?= $applicant['applicant_id'] ?>" style="color: #007bff; text-decoration: none;">Edit</a> |
-                                <a href="deleteApplicant.php?applicant_id=<?= $applicant['applicant_id'] ?>" style="color: #dc3545; text-decoration: none;">Delete</a>
+                                <a href="editApplicant.php?applicant_id=<?= $applicant['applicant_id'] ?>" class="actions">Edit</a>
+                                <a href="deleteApplicant.php?applicant_id=<?= $applicant['applicant_id'] ?>" class="actions delete">Delete</a>
                             </td>
                         </tr>
                     <?php endforeach; ?>
