@@ -2,7 +2,6 @@
 require_once 'core/dbConfig.php';
 require_once 'core/models.php';
 
-
 if (isset($_POST['applyJobBtn'])) {
     $firstName = trim($_POST['firstName']);
     $lastName = trim($_POST['lastName']);
@@ -13,11 +12,9 @@ if (isset($_POST['applyJobBtn'])) {
     $coverLetter = trim($_POST['coverLetter']);
 
     if (!empty($firstName) && !empty($lastName) && !empty($email) && !empty($phone) && !empty($experience) && !empty($skills) && !empty($coverLetter)) {
-        
         insertIntoApplicants($pdo, $firstName, $lastName, $email, $phone, $experience, $skills, $coverLetter);
     }
 }
-
 
 $applicants = seeAllApplicants($pdo);
 ?>
@@ -35,21 +32,20 @@ $applicants = seeAllApplicants($pdo);
             padding: 0;
             display: flex;
             justify-content: center;
-            align-items: center;
+            align-items: flex-start;
             min-height: 100vh;
-            flex-direction: column;
         }
         .container {
             background-color: #fff;
             padding: 20px;
             border-radius: 8px;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-            width: 90%;
-            max-width: 600px;
-            margin-bottom: 20px;
+            width: 100%;
+            max-width: 800px;
+            margin-top: 20px;
         }
         h1 {
-            text-align: center;
+            text-align: left;
             color: #333;
         }
         form {
@@ -66,21 +62,21 @@ $applicants = seeAllApplicants($pdo);
             border: 1px solid #ddd;
             border-radius: 4px;
             font-size: 16px;
+            width: 100%;
         }
         button {
             background-color: #28a745;
             color: #fff;
-            width: 86px;
-            height: 39px;
             cursor: pointer;
+            border: none;
+            width: auto;
+            padding: 10px 20px;
         }
         button:hover {
             background-color: #218838;
         }
         .table-container {
-            width: 90%;
-            max-width: 1000px;
-            overflow-x: auto;
+            margin-top: 40px;
         }
         table {
             width: 100%;
@@ -97,12 +93,16 @@ $applicants = seeAllApplicants($pdo);
         th {
             background-color: #f8f8f8;
         }
+        .center-text {
+            text-align: center;
+        }
     </style>
 </head>
 <body>
     <div class="container">
+        <!-- Form for job application -->
         <h1>Job Application Portal</h1>
-        <p>Input your details here to apply for being KUPAL</p>
+        <p>Input your details to apply for the job.</p>
         <form action="index.php" method="POST">
             <label for="firstName">First Name</label>
             <input type="text" id="firstName" name="firstName" required>
@@ -127,46 +127,46 @@ $applicants = seeAllApplicants($pdo);
 
             <button type="submit" name="applyJobBtn">Apply</button>
         </form>
-    </div>
 
-    <div class="table-container">
-        <h2>Applicants</h2>
-        <table>
-            <tr>
-                <th>Applicant ID</th>
-                <th>First Name</th>
-                <th>Last Name</th>
-                <th>Email</th>
-                <th>Phone</th>
-                <th>Experience</th>
-                <th>Skills</th>
-                <th>Cover Letter</th>
-                <th>Action</th>
-            </tr>
-            <?php if (!empty($applicants)): ?>
-                <?php foreach ($applicants as $applicant): ?>
-                    <tr>
-                        <td><?= htmlspecialchars($applicant['applicant_id']) ?></td>
-                        <td><?= htmlspecialchars($applicant['first_name']) ?></td>
-                        <td><?= htmlspecialchars($applicant['last_name']) ?></td>
-                        <td><?= htmlspecialchars($applicant['email']) ?></td>
-                        <td><?= htmlspecialchars($applicant['phone']) ?></td>
-                        <td><?= htmlspecialchars($applicant['experience']) ?></td>
-                        <td><?= htmlspecialchars($applicant['skills']) ?></td>
-                        <td><?= htmlspecialchars($applicant['cover_letter']) ?></td>
-                        <td>
-                            <a href="editApplicant.php?applicant_id=<?= $applicant['applicant_id'] ?>" style="color: #007bff; text-decoration: none;">Edit</a> |
-                             <a href="deleteApplicant.php?applicant_id=<?= $applicant['applicant_id'] ?>" style="color: #dc3545; text-decoration: none;">Delete</a>
-                        </td>
-
-                    </tr>
-                <?php endforeach; ?>
-            <?php else: ?>
+        <!-- Applicants Table -->
+        <div class="table-container">
+            <h2>Applicants</h2>
+            <table>
                 <tr>
-                    <td colspan="10" style="text-align: center;">No applicants found.</td>
+                    <th>Applicant ID</th>
+                    <th>First Name</th>
+                    <th>Last Name</th>
+                    <th>Email</th>
+                    <th>Phone</th>
+                    <th>Experience</th>
+                    <th>Skills</th>
+                    <th>Cover Letter</th>
+                    <th>Action</th>
                 </tr>
-            <?php endif; ?>
-        </table>
+                <?php if (!empty($applicants)): ?>
+                    <?php foreach ($applicants as $applicant): ?>
+                        <tr>
+                            <td><?= htmlspecialchars($applicant['applicant_id']) ?></td>
+                            <td><?= htmlspecialchars($applicant['first_name']) ?></td>
+                            <td><?= htmlspecialchars($applicant['last_name']) ?></td>
+                            <td><?= htmlspecialchars($applicant['email']) ?></td>
+                            <td><?= htmlspecialchars($applicant['phone']) ?></td>
+                            <td><?= htmlspecialchars($applicant['experience']) ?></td>
+                            <td><?= htmlspecialchars($applicant['skills']) ?></td>
+                            <td><?= htmlspecialchars($applicant['cover_letter']) ?></td>
+                            <td>
+                                <a href="editApplicant.php?applicant_id=<?= $applicant['applicant_id'] ?>" style="color: #007bff; text-decoration: none;">Edit</a> |
+                                <a href="deleteApplicant.php?applicant_id=<?= $applicant['applicant_id'] ?>" style="color: #dc3545; text-decoration: none;">Delete</a>
+                            </td>
+                        </tr>
+                    <?php endforeach; ?>
+                <?php else: ?>
+                    <tr>
+                        <td colspan="9" class="center-text">No applicants found.</td>
+                    </tr>
+                <?php endif; ?>
+            </table>
+        </div>
     </div>
 </body>
 </html>
