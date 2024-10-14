@@ -101,8 +101,8 @@ $applicants = seeAllApplicants($pdo);
 <body>
     <div class="container">
         <!-- Form for job application -->
-        <h1>Job Application Portal</h1>
-        <p>Input your details to apply for the job.</p>
+        <h1>Job Application Form</h1>
+        <p>Input your details to apply for being a KUPAL.</p>
         <form action="index.php" method="POST">
             <label for="firstName">First Name</label>
             <input type="text" id="firstName" name="firstName" required>
