@@ -32,7 +32,7 @@ $applicants = seeAllApplicants($pdo);
             padding: 0;
             display: flex;
             justify-content: center;
-            align-items: flex-start;
+            align-items: center;
             min-height: 100vh;
         }
         .container {
@@ -62,7 +62,7 @@ $applicants = seeAllApplicants($pdo);
             border: 1px solid #ddd;
             border-radius: 4px;
             font-size: 16px;
-            width: 100%;
+            width: 97%;
         }
         button {
             background-color: #28a745;
@@ -79,16 +79,16 @@ $applicants = seeAllApplicants($pdo);
             margin-top: 40px;
         }
         table {
-            width: 100%;
-            border-collapse: collapse;
-            margin-top: 20px;
+            width: ;
+            margin-top: 10px 20px;
+            align-items: center;
         }
         table, th, td {
             border: 1px solid #ddd;
         }
         th, td {
             padding: 10px;
-            text-align: left;
+            text-align: center;
         }
         th {
             background-color: #f8f8f8;
